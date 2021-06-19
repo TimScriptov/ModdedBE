@@ -6,10 +6,8 @@ import com.mojang.minecraftpe.store.Store;
 import com.mojang.minecraftpe.store.StoreListener;
 
 public class GooglePlayStore implements Store {
-    static final String IAB_BROADCAST_ACTION = "com.android.vending.billing.PURCHASES_UPDATED";
     MainActivity mActivity;
     StoreListener mListener;
-    int mPurchaseRequestCode;
 
     public GooglePlayStore(MainActivity activity, String licenseKey, StoreListener listener) {
         mActivity = activity;

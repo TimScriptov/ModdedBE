@@ -33,13 +33,13 @@
     <application>
         <activity
             android:name="com.mojang.minecraftpe.AgentMainActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:label="@string/app_name"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             android:excludeFromRecents="false"
+            android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="sensorLandscape"
-            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
-            android:alwaysRetainTaskState="true">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -62,40 +62,46 @@
         </activity>
 
         <!-- UNNECESSARY FIELDS AS FOLLOWS. IF THERE IS COMPILE ERRORS,PLEASE REMOVE THEM. -->
-        <activity android:name="com.microsoft.xal.browser.IntentHandler"
-            android:exported="true" android:launchMode="singleTask"
-            android:screenOrientation="sensorLandscape"
-            android:configChanges="orientation">
+        <activity
+            android:name="com.microsoft.xal.browser.IntentHandler"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <data android:scheme="ms-xal-0000000048183522" android:host="auth"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
+                <data
+                    android:host="auth"
+                    android:scheme="ms-xal-0000000048183522" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.microsoft.xal.browser.BrowserLaunchActivity"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="sensorLandscape"
-            android:configChanges="orientation"/>
-        <activity
-            android:name="com.microsoft.xal.browser.WebKitWebViewController"
-            android:exported="false"
-            android:screenOrientation="sensorLandscape"
-            android:configChanges="orientation"/>
-        <activity
             android:configChanges="orientation"
             android:exported="false"
             android:launchMode="singleTask"
+            android:screenOrientation="sensorLandscape" />
+        <activity
+            android:name="com.microsoft.xal.browser.WebKitWebViewController"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape" />
+        <activity
             android:name="com.microsoft.xal.browser.WebView"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:launchMode="singleTask"
             android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
+            android:name="com.microsoft.xal.browser.WebKitWebViewController"
             android:configChanges="orientation"
             android:exported="false"
-            android:name="com.microsoft.xal.browser.WebKitWebViewController"
             android:screenOrientation="sensorLandscape" />
+
         <meta-data
             android:name="xperiaplayoptimized_content"
             android:resource="@string/xperiaplayoptimized_content" />
@@ -110,8 +116,8 @@
             android:value="@string/appcenter_android_id" />
 
         <receiver
-            android:exported="true"
-            android:name="com.appsflyer.SingleInstallBroadcastReceiver">
+            android:name="com.appsflyer.SingleInstallBroadcastReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
@@ -133,8 +139,8 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:exported="true"
             android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -143,22 +149,22 @@
         </receiver>
 
         <service
-            android:exported="false"
-            android:name="com.mojang.minecraftpe.NotificationListenerService">
+            android:name="com.mojang.minecraftpe.NotificationListenerService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
         <service
-            android:exported="true"
-            android:name="com.microsoft.xbox.idp.model.gcm.NotificationInstanceIDListenerService">
+            android:name="com.microsoft.xbox.idp.model.gcm.NotificationInstanceIDListenerService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
         <service
-            android:exported="true"
-            android:name="com.mojang.minecraftpe.ImportService" />
+            android:name="com.mojang.minecraftpe.ImportService"
+            android:exported="true" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -194,23 +200,23 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.microsoft.onlineid.authenticator.AccountAddPendingActivity"
             android:exported="false"
             android:icon="@drawable/msa_ms_logo"
             android:label="@string/webflow_header"
-            android:name="com.microsoft.onlineid.authenticator.AccountAddPendingActivity"
             android:theme="@style/Theme.MSA" />
         <activity
+            android:name="com.microsoft.onlineid.internal.ui.WebFlowActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
-            android:name="com.microsoft.onlineid.internal.ui.WebFlowActivity"
             android:theme="@style/Theme.MSA"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name="com.microsoft.onlineid.ui.AddAccountActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:icon="@drawable/msa_ms_logo"
             android:label="@string/webflow_header"
-            android:name="com.microsoft.onlineid.ui.AddAccountActivity"
             android:theme="@style/Theme.MSA"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -221,15 +227,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.microsoft.onlineid.ui.SignOutActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
-            android:name="com.microsoft.onlineid.ui.SignOutActivity"
             android:theme="@style/Theme.MSA.Transparent" />
         <activity
+            android:name="com.microsoft.onlineid.internal.ui.AccountPickerActivity"
             android:exported="false"
             android:icon="@drawable/msa_ms_logo"
             android:label="@string/webflow_header"
-            android:name="com.microsoft.onlineid.internal.ui.AccountPickerActivity"
             android:theme="@style/Theme.MSA.Dialog">
             <intent-filter>
                 <action android:name="com.microsoft.onlineid.internal.PICK_ACCOUNT" />
@@ -237,22 +243,22 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.microsoft.onlineid.internal.ui.InterruptResolutionActivity"
             android:exported="false"
             android:icon="@drawable/msa_ms_logo"
             android:label="@string/webflow_header"
-            android:name="com.microsoft.onlineid.internal.ui.InterruptResolutionActivity"
             android:theme="@style/Theme.MSA" />
         <activity
-            android:configChanges="keyboard|keyboardHidden|screenLayout"
             android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:configChanges="orientation|screenSize"
             android:name="com.microsoft.xboxtcui.FbLoginShimActivity"
+            android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:configChanges="orientation|screenSize"
             android:name="com.microsoft.xboxtcui.FbShareShimActivity"
+            android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <meta-data
@@ -272,8 +278,8 @@
             android:value="@string/appcenter_android_id" />
 
         <receiver
-            android:exported="true"
-            android:name="com.appsflyer.SingleInstallBroadcastReceiver">
+            android:name="com.appsflyer.SingleInstallBroadcastReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
@@ -291,8 +297,8 @@
         </receiver>
 
         <service
-            android:exported="false"
-            android:name="com.microsoft.onlineid.internal.sso.client.BackupService">
+            android:name="com.microsoft.onlineid.internal.sso.client.BackupService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.microsoft.onlineid.internal.sso.client.PUSH_BACKUP" />
                 <action android:name="com.microsoft.onlineid.internal.sso.client.PUSH_BACKUP_IF_NEEDED" />
@@ -301,8 +307,8 @@
             </intent-filter>
         </service>
         <service
-            android:exported="false"
-            android:name="com.microsoft.onlineid.internal.MsaService">
+            android:name="com.microsoft.onlineid.internal.MsaService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.microsoft.onlineid.internal.GET_TICKET" />
                 <action android:name="com.microsoft.onlineid.internal.UPDATE_PROFILE" />
@@ -313,9 +319,9 @@
             </intent-filter>
         </service>
         <service
+            android:name="com.microsoft.onlineid.internal.sso.service.MsaSsoService"
             android:enabled="true"
-            android:exported="true"
-            android:name="com.microsoft.onlineid.internal.sso.service.MsaSsoService">
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.microsoft.msa.action.SSO_SERVICE" />
             </intent-filter>
@@ -327,6 +333,13 @@
                 android:name="com.microsoft.msa.service.sdk_version"
                 android:value="@string/sdk_version_name" />
         </service>
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="net.listerily.moddedbe.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" />
+
     </application>
 
 </manifest>

@@ -20,8 +20,4 @@ public abstract class MainActivity extends NativeActivity {
     public Resources getResources() {
         throw new RuntimeException("Stub!");
     }
-
-    public void initializeXboxLive(long xalInitArgs, long xblInitArgs) {
-        throw new RuntimeException("Stub!");
-    }
 }

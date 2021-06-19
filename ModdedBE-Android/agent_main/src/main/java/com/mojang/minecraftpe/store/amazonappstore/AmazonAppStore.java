@@ -2,22 +2,13 @@ package com.mojang.minecraftpe.store.amazonappstore;
 
 import android.content.Context;
 
-import com.mojang.minecraftpe.MainActivity;
 import com.mojang.minecraftpe.store.ExtraLicenseResponseData;
 import com.mojang.minecraftpe.store.Store;
 import com.mojang.minecraftpe.store.StoreListener;
 
 public class AmazonAppStore implements Store {
-    static final String IAB_BROADCAST_ACTION = "com.android.vending.billing.PURCHASES_UPDATED";
-    MainActivity mActivity;
     StoreListener mListener;
-    int mPurchaseRequestCode;
-    private boolean mForFireTV;
-
-    public AmazonAppStore(Context context, StoreListener listener) {
-        System.out.println("AmazonAppStore:" + context + ":" + listener);
-        mListener = listener;
-    }
+    private final boolean mForFireTV;
 
     public AmazonAppStore(Context context, StoreListener listener, boolean forFireTV) {
         System.out.println("AmazonAppStore:" + context + ":" + listener + ":" + forFireTV);
